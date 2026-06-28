@@ -51,9 +51,15 @@ export async function POST(request: Request) {
 
     // Handle session state: awaiting_name
     if (session.state === 'awaiting_name') {
-      // Treat the message as the guest's name
-      session.guestName = message.trim();
-      session.state = 'active';
+      // Check if the user typed a greeting instead of their name
+      const greetings = [
+        'hello', 'hi', 'hey', 'hola', 'namaste', 'good morning',
+        'good afternoon', 'good evening', 'howdy', 'sup', 'yo',
+        'greetings', 'hii', 'hiii', 'helloo', 'hellooo', 'heya',
+        'hi there', 'hey there', 'hello there',
+      ];
+      const normalizedMessage = message.trim().toLowerCase().replace(/[!.,?]+$/, '');
+      const isGreeting = greetings.includes(normalizedMessage);
 
       // Store user message
       const userMessage: ChatMessage = {
@@ -64,8 +70,19 @@ export async function POST(request: Request) {
       };
       sessionManager.addMessage(session.id, userMessage);
 
-      // Generate welcome greeting
-      const reply = `Welcome to Saltystaz Gurgaon, ${session.guestName}! I'm Sophia, your concierge. How may I assist you today?`;
+      let reply: string;
+
+      if (isGreeting) {
+        // User sent a greeting — ask for their name again
+        session.guestName = null;
+        session.state = 'awaiting_name';
+        reply = `Hello! I'm Sophia, your concierge at Saltystaz Gurgaon. May I know your name please?`;
+      } else {
+        // Treat the message as the guest's name
+        session.guestName = message.trim();
+        session.state = 'active';
+        reply = `Welcome, ${session.guestName}! How may I assist you today?`;
+      }
 
       // Store assistant reply
       const assistantMessage: ChatMessage = {

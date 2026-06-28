@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saltystaz Gurgaon - AI Chat Assistant</title>
+  <title>Saltystaz Gurgaon - AI Chat Assistant | Ravinder Singh</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #1a1a2e; color: #fff; }
@@ -21,36 +21,35 @@
       overflow: hidden;
     }
 
-    /* Slide themes */
-    .slide-title { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-    .slide-dark { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
-    .slide-light { background: #f8f9fa; color: #2d3436; }
-    .slide-accent { background: linear-gradient(135deg, #0f3443 0%, #34e89e 100%); }
-    .slide-warm { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-    .slide-blue { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+    /* Xebia Quantum Branded Themes */
+    .slide-title { background: linear-gradient(135deg, #7B2D8B 0%, #4A1259 100%); }
+    .slide-dark { background: linear-gradient(135deg, #1a1a2e 0%, #2D1B3D 100%); }
+    .slide-light { background: #F8F9FA; color: #212529; }
+    .slide-purple { background: linear-gradient(135deg, #5C1F6A 0%, #7B2D8B 50%, #9B4FB3 100%); }
+    .slide-accent { background: linear-gradient(135deg, #4A1259 0%, #7B2D8B 100%); }
 
-    h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; text-align: center; }
+    h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; text-align: center; letter-spacing: -0.02em; }
     h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 30px; }
     h3 { font-size: 1.8rem; font-weight: 600; margin-bottom: 15px; }
     p { font-size: 1.3rem; line-height: 1.8; max-width: 900px; text-align: center; }
     
     .subtitle { font-size: 1.5rem; opacity: 0.9; margin-top: 10px; }
-    .tag { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 50px; font-size: 1rem; margin: 5px; }
+    .tag { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 50px; font-size: 1rem; margin: 5px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.15); }
     
     .content { display: flex; gap: 60px; align-items: center; width: 100%; max-width: 1200px; }
     .content-text { flex: 1; }
     .content-visual { flex: 1; display: flex; justify-content: center; }
     
     .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 40px; border: 1px solid rgba(255,255,255,0.2); }
-    .card-light { background: #fff; border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+    .card-light { background: #fff; border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(123,45,139,0.1); }
     
     ul { list-style: none; padding: 0; }
     ul li { font-size: 1.2rem; padding: 12px 0; padding-left: 30px; position: relative; line-height: 1.6; }
-    ul li::before { content: '→'; position: absolute; left: 0; color: #ffd700; font-weight: bold; }
-    .slide-light ul li::before { color: #667eea; }
+    ul li::before { content: '→'; position: absolute; left: 0; color: #E91E63; font-weight: bold; }
+    .slide-light ul li::before { color: #7B2D8B; }
     
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; width: 100%; max-width: 1100px; }
-    .grid-item { background: rgba(255,255,255,0.1); border-radius: 16px; padding: 30px; text-align: center; border: 1px solid rgba(255,255,255,0.15); }
+    .grid-item { background: rgba(255,255,255,0.08); border-radius: 16px; padding: 30px; text-align: center; border: 1px solid rgba(255,255,255,0.12); }
     .grid-item h3 { font-size: 1.3rem; margin-bottom: 10px; }
     .grid-item p { font-size: 1rem; text-align: center; }
     .grid-item .icon { font-size: 2.5rem; margin-bottom: 15px; }
@@ -72,35 +71,45 @@
       background: #fff;
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 60px rgba(123,45,139,0.3);
       color: #333;
     }
-    .chat-header { background: #667eea; color: #fff; padding: 15px 20px; font-weight: 600; font-size: 0.9rem; }
+    .chat-header { background: linear-gradient(135deg, #7B2D8B, #4A1259); color: #fff; padding: 15px 20px; font-weight: 600; font-size: 0.9rem; }
     .chat-body { padding: 15px; min-height: 200px; }
     .chat-msg { margin: 8px 0; padding: 10px 14px; border-radius: 16px; font-size: 0.85rem; max-width: 80%; }
-    .msg-user { background: #667eea; color: #fff; margin-left: auto; border-bottom-right-radius: 4px; }
+    .msg-user { background: linear-gradient(135deg, #7B2D8B, #5C1F6A); color: #fff; margin-left: auto; border-bottom-right-radius: 4px; }
     .msg-bot { background: #f1f1f1; color: #333; border-bottom-left-radius: 4px; }
     .msg-system { background: #e8e8e8; color: #666; margin: 0 auto; text-align: center; font-style: italic; font-size: 0.75rem; border-radius: 50px; }
     .chat-input { border-top: 1px solid #eee; padding: 12px; display: flex; gap: 8px; }
     .chat-input input { flex: 1; border: 1px solid #ddd; border-radius: 50px; padding: 8px 14px; font-size: 0.8rem; }
-    .chat-input button { background: #667eea; color: #fff; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; }
+    .chat-input button { background: #7B2D8B; color: #fff; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; }
 
     .stats { display: flex; gap: 40px; margin-top: 30px; }
     .stat { text-align: center; }
-    .stat-number { font-size: 3rem; font-weight: 800; color: #ffd700; }
+    .stat-number { font-size: 3rem; font-weight: 800; color: #E91E63; }
     .stat-label { font-size: 1rem; opacity: 0.8; margin-top: 5px; }
 
     .tech-stack { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 20px; }
-    .tech-badge { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 10px 20px; border-radius: 10px; font-size: 1rem; font-weight: 500; }
+    .tech-badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); padding: 10px 20px; border-radius: 10px; font-size: 1rem; font-weight: 500; }
 
     .flow-steps { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; justify-content: center; }
-    .flow-step { background: rgba(255,255,255,0.15); padding: 20px 25px; border-radius: 12px; text-align: center; min-width: 140px; }
-    .flow-step .step-num { font-size: 1.5rem; font-weight: 800; color: #ffd700; }
+    .flow-step { background: rgba(255,255,255,0.12); padding: 20px 25px; border-radius: 12px; text-align: center; min-width: 140px; border: 1px solid rgba(255,255,255,0.15); }
+    .flow-step .step-num { font-size: 1.5rem; font-weight: 800; color: #E91E63; }
     .flow-step .step-text { font-size: 0.9rem; margin-top: 5px; }
     .flow-arrow { font-size: 1.5rem; opacity: 0.6; }
 
-    .footer { position: absolute; bottom: 20px; font-size: 0.8rem; opacity: 0.5; }
+    .footer { position: absolute; bottom: 20px; font-size: 0.8rem; opacity: 0.6; }
+    .xebia-logo { color: #E91E63; font-weight: 700; }
     
+    .section-label { 
+      font-size: 0.85rem; 
+      text-transform: uppercase; 
+      letter-spacing: 0.15em; 
+      opacity: 0.7; 
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
     @media print {
       .slide { height: 100vh; min-height: unset; }
     }
@@ -108,317 +117,218 @@
 </head>
 <body>
 
-<!-- Slide 1: Title -->
+<!-- Slide 1: Context and Why Now -->
 <div class="slide slide-title">
+  <div class="section-label">Slide 1 · Context & Why Now</div>
   <h1>🏨 Saltystaz Gurgaon</h1>
-  <p class="subtitle">AI Chat Assistant — Proof of Concept</p>
+  <p class="subtitle">AI-Powered Chat Concierge</p>
   <div style="margin-top: 30px;">
-    <span class="tag">AI-Powered</span>
-    <span class="tag">Next.js</span>
-    <span class="tag">OpenAI Agents SDK</span>
+    <span class="tag">Xebia Quantum Shift</span>
+    <span class="tag">AI Practitioner+</span>
+    <span class="tag">Batch #1</span>
   </div>
-  <p style="margin-top: 40px; font-size: 1.1rem; opacity: 0.8;">Enhancing guest experience through intelligent conversation</p>
-  <div class="footer">Saltystaz Gurgaon • June 2026</div>
+  <div style="margin-top: 40px; max-width: 800px;">
+    <p style="font-size: 1.1rem; text-align: center; line-height: 1.8;">
+      Hotels face rising guest expectations for instant, 24/7 support. Traditional front-desk operations 
+      cannot scale during peak hours, leading to wait times, inconsistent service, and missed booking opportunities.
+    </p>
+  </div>
+  <div style="margin-top: 30px; display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
+    <div style="text-align: center;">
+      <div style="font-size: 2.5rem; font-weight: 800; color: #E91E63;">3-5 min</div>
+      <div style="font-size: 0.9rem; opacity: 0.8;">Avg. wait time</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="font-size: 2.5rem; font-weight: 800; color: #E91E63;">60%</div>
+      <div style="font-size: 0.9rem; opacity: 0.8;">Repetitive queries</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="font-size: 2.5rem; font-weight: 800; color: #E91E63;">Zero</div>
+      <div style="font-size: 0.9rem; opacity: 0.8;">After-hours support</div>
+    </div>
+  </div>
+  <p style="margin-top: 30px; font-size: 1rem; opacity: 0.8;">
+    AI and automation are reshaping hospitality — from reactive support to proactive, conversational experiences.
+  </p>
+  <div class="footer">Ravinder Singh · <span class="xebia-logo">Xebia</span> Quantum Shift AI Practitioner+ · June 2026</div>
 </div>
 
-<!-- Slide 2: Problem Statement -->
+<!-- Slide 2: Current Challenges and Gaps -->
 <div class="slide slide-dark">
-  <h2>💡 The Problem</h2>
+  <div class="section-label">Slide 2 · Current Challenges & Gaps</div>
+  <h2>⚠️ Current Challenges & Gaps</h2>
   <div class="content">
     <div class="content-text">
       <ul>
-        <li>Guests call the front desk for common queries</li>
-        <li>Wait times increase during peak hours</li>
-        <li>Repetitive questions consume staff bandwidth</li>
-        <li>Booking process requires multiple steps</li>
-        <li>No 24/7 instant assistance available</li>
+        <li><strong>Manual process:</strong> Guests call front desk for every query — room availability, check-in time, amenities</li>
+        <li><strong>Peak hour bottleneck:</strong> Wait times spike during check-in/check-out hours</li>
+        <li><strong>Inconsistent service:</strong> Quality varies by staff member and shift</li>
+        <li><strong>No self-service booking:</strong> Multi-step phone/email process for reservations</li>
+        <li><strong>Technology gap:</strong> No conversational AI layer for guest interactions</li>
+        <li><strong>Productivity drain:</strong> Staff spend 60% of time on repetitive FAQ answers</li>
       </ul>
     </div>
     <div class="content-visual">
       <div class="card" style="text-align: center;">
         <div style="font-size: 4rem; margin-bottom: 15px;">📞</div>
-        <h3>Traditional Process</h3>
-        <p style="font-size: 1rem;">Guest → Call → Wait → Agent → Answer</p>
-        <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.7;">Average wait: 3-5 minutes</p>
+        <h3>Current Workflow</h3>
+        <p style="font-size: 1rem;">Guest → Call → Wait → Agent → Manual Lookup → Answer</p>
+        <p style="font-size: 0.9rem; margin-top: 15px; opacity: 0.7;">❌ Not scalable<br/>❌ No 24/7 coverage<br/>❌ High staff cost</p>
       </div>
     </div>
   </div>
+  <div class="footer">Ravinder Singh · <span class="xebia-logo">Xebia</span> Quantum Shift AI Practitioner+</div>
 </div>
 
-<!-- Slide 3: Solution -->
-<div class="slide slide-accent">
-  <h2>✨ Our Solution: Meet Sophia</h2>
+<!-- Slide 3: Vision and Future State -->
+<div class="slide slide-purple">
+  <div class="section-label">Slide 3 · Vision & Future State</div>
+  <h2>🚀 Vision & Future State</h2>
   <div class="content">
     <div class="content-text">
+      <h3 style="color: #E91E63; margin-bottom: 20px;">What This Enables</h3>
       <ul>
-        <li>AI concierge available 24/7 instantly</li>
-        <li>Natural conversation in Indian English</li>
-        <li>Handles bookings, FAQs, and policies</li>
-        <li>Adapts tone — formal or casual</li>
-        <li>Focused strictly on hotel services</li>
+        <li><strong>Instant responses</strong> — < 3 seconds, 24/7 availability</li>
+        <li><strong>Self-service booking</strong> — complete room reservations in chat</li>
+        <li><strong>Consistent experience</strong> — same warm, professional tone every time</li>
+        <li><strong>Staff freed up</strong> — focus on high-value guest interactions</li>
+        <li><strong>Scalable</strong> — handles unlimited concurrent conversations</li>
       </ul>
-    </div>
-    <div class="content-visual">
-      <div class="chat-mockup">
-        <div class="chat-header">🏨 Saltystaz Gurgaon — Sophia</div>
-        <div class="chat-body">
-          <div class="chat-msg msg-system">Hi! I'm Sophia. What's your name?</div>
-          <div class="chat-msg msg-user">Priya</div>
-          <div class="chat-msg msg-bot">Welcome to Saltystaz Gurgaon, Priya! How may I assist you today?</div>
-          <div class="chat-msg msg-user">Book a room for tomorrow</div>
-          <div class="chat-msg msg-bot">I found 3 options for you! Deluxe Room at ₹8,500/night...</div>
-        </div>
-        <div class="chat-input">
-          <input placeholder="Type your message..." />
-          <button>→</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 4: Key Features -->
-<div class="slide slide-dark">
-  <h2>🎯 Key Features</h2>
-  <div class="grid">
-    <div class="grid-item">
-      <div class="icon">🤖</div>
-      <h3>AI Conversation</h3>
-      <p>Natural language understanding with GPT-4o-mini</p>
-    </div>
-    <div class="grid-item">
-      <div class="icon">🏨</div>
-      <h3>Room Booking</h3>
-      <p>Check availability, book, and cancel rooms</p>
-    </div>
-    <div class="grid-item">
-      <div class="icon">📋</div>
-      <h3>Hotel FAQ</h3>
-      <p>Policies, amenities, check-in/out times</p>
-    </div>
-    <div class="grid-item">
-      <div class="icon">🎭</div>
-      <h3>Tone Matching</h3>
-      <p>Adapts to formal or casual guest style</p>
-    </div>
-    <div class="grid-item">
-      <div class="icon">🔒</div>
-      <h3>Topic Boundary</h3>
-      <p>Strictly hotel-only responses</p>
-    </div>
-    <div class="grid-item">
-      <div class="icon">💬</div>
-      <h3>Session Memory</h3>
-      <p>Remembers context for 50 messages</p>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 5: Architecture -->
-<div class="slide slide-light">
-  <h2 style="color: #2d3436;">🏗️ System Architecture</h2>
-  <div class="arch-diagram" style="color: #333; background: #f1f3f5;">
-┌─────────────────────────────────────────────────────────────┐
-│                      Browser (React)                         │
-│                    Chat UI Component                         │
-└──────────────────────────┬──────────────────────────────────┘
-                           │ POST /api/chat
-┌──────────────────────────▼──────────────────────────────────┐
-│                  Next.js Server (API Route)                   │
-│                                                              │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────────┐  │
-│  │   Session    │  │    Hotel     │  │   Input          │  │
-│  │   Manager    │  │    Agent     │  │   Validation     │  │
-│  └──────────────┘  └──────┬───────┘  └──────────────────┘  │
-│                           │                                  │
-│         ┌─────────────────┼─────────────────┐               │
-│         ▼                 ▼                  ▼               │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │
-│  │   Booking    │  │     FAQ      │  │  Mock Data   │     │
-│  │   Engine     │  │    Module    │  │    Store     │     │
-│  └──────────────┘  └──────────────┘  └──────────────┘     │
-└──────────────────────────────────────────────────────────────┘
-                           │
-┌──────────────────────────▼──────────────────────────────────┐
-│              OpenAI GPT-4o-mini (External API)                │
-└──────────────────────────────────────────────────────────────┘
-  </div>
-</div>
-
-<!-- Slide 6: Tech Stack -->
-<div class="slide slide-dark">
-  <h2>🛠️ Technology Stack</h2>
-  <div class="tech-stack">
-    <span class="tech-badge">Next.js 16</span>
-    <span class="tech-badge">TypeScript</span>
-    <span class="tech-badge">React 19</span>
-    <span class="tech-badge">Tailwind CSS</span>
-    <span class="tech-badge">OpenAI Agents SDK</span>
-    <span class="tech-badge">GPT-4o-mini</span>
-    <span class="tech-badge">Zod</span>
-    <span class="tech-badge">Vitest</span>
-    <span class="tech-badge">fast-check</span>
-  </div>
-  <div style="margin-top: 50px; max-width: 800px;">
-    <ul>
-      <li>Single command setup: <code>npm run dev</code></li>
-      <li>No database required — all in-memory mock data</li>
-      <li>Agent SDK handles tool calling automatically</li>
-      <li>Property-based testing for correctness guarantees</li>
-    </ul>
-  </div>
-</div>
-
-<!-- Slide 7: How It Works -->
-<div class="slide slide-blue">
-  <h2>⚡ How It Works</h2>
-  <div class="flow-steps">
-    <div class="flow-step">
-      <div class="step-num">1</div>
-      <div class="step-text">Guest sends<br/>message</div>
-    </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="step-num">2</div>
-      <div class="step-text">API validates<br/>& routes</div>
-    </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="step-num">3</div>
-      <div class="step-text">Agent decides<br/>action</div>
-    </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="step-num">4</div>
-      <div class="step-text">Tool executes<br/>(booking/FAQ)</div>
-    </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="step-num">5</div>
-      <div class="step-text">Response<br/>delivered</div>
-    </div>
-  </div>
-  <p style="margin-top: 40px; font-size: 1.1rem;">The AI agent autonomously decides when to call tools vs reply directly</p>
-</div>
-
-<!-- Slide 8: Room Types -->
-<div class="slide slide-warm">
-  <h2>🛏️ Room Categories</h2>
-  <div class="grid">
-    <div class="grid-item" style="background: rgba(255,255,255,0.2);">
-      <div class="icon">🏠</div>
-      <h3>Deluxe Room</h3>
-      <p>₹8,500/night</p>
-      <p style="font-size: 0.85rem; margin-top: 8px;">Max 2 guests • City view • King bed</p>
-    </div>
-    <div class="grid-item" style="background: rgba(255,255,255,0.2);">
-      <div class="icon">🏢</div>
-      <h3>Executive Suite</h3>
-      <p>₹15,000/night</p>
-      <p style="font-size: 0.85rem; margin-top: 8px;">Max 4 guests • Lounge access • Living area</p>
-    </div>
-    <div class="grid-item" style="background: rgba(255,255,255,0.2);">
-      <div class="icon">👑</div>
-      <h3>Presidential Suite</h3>
-      <p>₹35,000/night</p>
-      <p style="font-size: 0.85rem; margin-top: 8px;">Max 6 guests • Butler service • Jacuzzi</p>
-    </div>
-  </div>
-  <p style="margin-top: 30px;">90 days of availability • Real-time booking with confirmation numbers</p>
-</div>
-
-<!-- Slide 9: Testing & Quality -->
-<div class="slide slide-light">
-  <h2 style="color: #2d3436;">✅ Testing & Quality</h2>
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-number" style="color: #667eea;">151</div>
-      <div class="stat-label" style="color: #555;">Tests Passing</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number" style="color: #667eea;">16</div>
-      <div class="stat-label" style="color: #555;">Test Files</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number" style="color: #667eea;">7</div>
-      <div class="stat-label" style="color: #555;">Property Tests</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number" style="color: #667eea;">100%</div>
-      <div class="stat-label" style="color: #555;">Build Pass</div>
-    </div>
-  </div>
-  <div style="margin-top: 40px; text-align: left; max-width: 700px;">
-    <ul>
-      <li>Unit tests for every module</li>
-      <li>Property-based tests (100 iterations each) for correctness</li>
-      <li>Integration tests with mocked AI responses</li>
-      <li>UI component tests with React Testing Library</li>
-    </ul>
-  </div>
-</div>
-
-<!-- Slide 10: Demo Scenarios -->
-<div class="slide slide-dark">
-  <h2>🎬 Demo Scenarios</h2>
-  <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
-    <div class="grid-item">
-      <div class="icon">👋</div>
-      <h3>Welcome Flow</h3>
-      <p>Name capture → personalized greeting</p>
-    </div>
-    <div class="grid-item">
-      <div class="icon">🔍</div>
-      <h3>Room Inquiry</h3>
-      <p>"Book a room for tomorrow" → availability</p>
-    </div>
-    <div class="grid-item">
-      <div class="icon">✅</div>
-      <h3>Booking Confirmation</h3>
-      <p>Select room → confirmation number</p>
-    </div>
-    <div class="grid-item">
-      <div class="icon">❌</div>
-      <h3>Off-Topic Handling</h3>
-      <p>"Tell me about JavaScript" → polite redirect</p>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 11: Impact & Benefits -->
-<div class="slide slide-accent">
-  <h2>📈 Expected Impact</h2>
-  <div class="content">
-    <div class="content-text">
-      <ul>
-        <li><strong>Reduced wait times</strong> — instant AI responses</li>
-        <li><strong>24/7 availability</strong> — no staffing gaps</li>
-        <li><strong>Consistent experience</strong> — same quality every time</li>
-        <li><strong>Staff efficiency</strong> — focus on complex requests</li>
-        <li><strong>Guest satisfaction</strong> — natural, warm interaction</li>
-      </ul>
+      <h3 style="color: #E91E63; margin-top: 30px; margin-bottom: 15px;">Future State Model</h3>
+      <p style="text-align: left; font-size: 1.1rem;">People handle complex requests & exceptions. AI handles routine queries & bookings. Process is conversational, not transactional.</p>
     </div>
     <div class="content-visual">
       <div class="card" style="text-align: center;">
         <div style="font-size: 3rem; margin-bottom: 15px;">⚡</div>
-        <h3>With Sophia</h3>
-        <p style="font-size: 1rem;">Guest → Type → Instant Response</p>
-        <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.7;">Average response: < 3 seconds</p>
+        <h3>With Sophia AI</h3>
+        <p style="font-size: 1rem;">Guest → Type → Instant AI Response</p>
+        <p style="font-size: 0.9rem; margin-top: 15px; opacity: 0.8;">✅ 24/7 available<br/>✅ < 3s response<br/>✅ Personalized<br/>✅ Books rooms instantly</p>
       </div>
     </div>
   </div>
+  <div class="footer">Ravinder Singh · <span class="xebia-logo">Xebia</span> Quantum Shift AI Practitioner+</div>
 </div>
 
-<!-- Slide 12: Thank You -->
-<div class="slide slide-title">
-  <h1>🙏 Thank You</h1>
-  <p class="subtitle" style="margin-top: 20px;">Saltystaz Gurgaon AI Chat Assistant</p>
-  <p style="margin-top: 30px; font-size: 1.2rem;">Powered by Sophia — your intelligent concierge</p>
-  <div style="margin-top: 40px;">
-    <span class="tag">Live Demo Available</span>
-    <span class="tag">localhost:3000</span>
+<!-- Slide 4: Solution Overview -->
+<div class="slide slide-light">
+  <div class="section-label" style="color: #7B2D8B;">Slide 4 · Solution Overview</div>
+  <h2 style="color: #212529;">🏗️ Solution Overview</h2>
+  
+  <div style="display: flex; gap: 40px; width: 100%; max-width: 1200px; align-items: flex-start;">
+    <div style="flex: 1;">
+      <div class="arch-diagram" style="color: #333; background: #f1f3f5; font-size: 0.85rem;">
+┌──────────────────────────────────────────────┐
+│        Browser (React + Next.js)             │
+│           Chat UI Component                  │
+└────────────────────┬─────────────────────────┘
+                     │ POST /api/chat
+┌────────────────────▼─────────────────────────┐
+│         Next.js API Route                    │
+│  ┌────────────┐ ┌──────────┐ ┌───────────┐  │
+│  │  Session   │ │  Hotel   │ │   Input   │  │
+│  │  Manager   │ │  Agent   │ │ Validator │  │
+│  └────────────┘ └────┬─────┘ └───────────┘  │
+│       ┌───────────────┼────────────┐         │
+│       ▼               ▼            ▼         │
+│  ┌─────────┐    ┌─────────┐  ┌─────────┐   │
+│  │ Booking │    │   FAQ   │  │  Mock   │   │
+│  │ Engine  │    │ Module  │  │  Data   │   │
+│  └─────────┘    └─────────┘  └─────────┘   │
+└────────────────────┬─────────────────────────┘
+                     │
+┌────────────────────▼─────────────────────────┐
+│       OpenAI GPT-4o-mini (Agents SDK)        │
+└──────────────────────────────────────────────┘
+      </div>
+    </div>
+    <div style="flex: 1;">
+      <h3 style="color: #7B2D8B; font-size: 1.4rem;">Key Capabilities</h3>
+      <ul>
+        <li>Room availability check & booking</li>
+        <li>Booking cancellation</li>
+        <li>Hotel FAQ (policies, amenities, pricing)</li>
+        <li>Tone-adaptive conversation</li>
+        <li>Session memory (50 messages)</li>
+        <li>Topic boundary enforcement</li>
+      </ul>
+      <h3 style="color: #7B2D8B; font-size: 1.4rem; margin-top: 25px;">AI Tools Used</h3>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;">
+        <span style="background: #7B2D8B; color: #fff; padding: 6px 14px; border-radius: 6px; font-size: 0.85rem;">Kiro</span>
+        <span style="background: #7B2D8B; color: #fff; padding: 6px 14px; border-radius: 6px; font-size: 0.85rem;">OpenAI Agents SDK</span>
+        <span style="background: #7B2D8B; color: #fff; padding: 6px 14px; border-radius: 6px; font-size: 0.85rem;">GPT-4o-mini</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;">
+        <span style="background: #f1f3f5; color: #333; padding: 6px 14px; border-radius: 6px; font-size: 0.85rem; border: 1px solid #ddd;">Next.js 16</span>
+        <span style="background: #f1f3f5; color: #333; padding: 6px 14px; border-radius: 6px; font-size: 0.85rem; border: 1px solid #ddd;">TypeScript</span>
+        <span style="background: #f1f3f5; color: #333; padding: 6px 14px; border-radius: 6px; font-size: 0.85rem; border: 1px solid #ddd;">Tailwind CSS</span>
+        <span style="background: #f1f3f5; color: #333; padding: 6px 14px; border-radius: 6px; font-size: 0.85rem; border: 1px solid #ddd;">Vitest</span>
+      </div>
+    </div>
   </div>
-  <p style="margin-top: 40px; font-size: 1rem; opacity: 0.7;">Questions?</p>
+  <div class="footer" style="color: #7B2D8B;">Ravinder Singh · <span class="xebia-logo">Xebia</span> Quantum Shift AI Practitioner+</div>
+</div>
+
+<!-- Slide 5: Business Flow and Role of AI -->
+<div class="slide slide-accent">
+  <div class="section-label">Slide 5 · Business Flow & Role of AI</div>
+  <h2>⚡ Business Flow & AI Intervention</h2>
+  
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="step-num">1</div>
+      <div class="step-text">Guest opens<br/>chat</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="step-num">2</div>
+      <div class="step-text">🤖 AI greets<br/>& collects name</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="step-num">3</div>
+      <div class="step-text">Guest asks<br/>query</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="step-num">4</div>
+      <div class="step-text">🤖 AI decides<br/>tool or reply</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="step-num">5</div>
+      <div class="step-text">🤖 Executes<br/>& responds</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px; display: flex; gap: 30px; max-width: 1100px; width: 100%;">
+    <div class="card" style="flex: 1; text-align: center;">
+      <h3>👤 User Interactions</h3>
+      <p style="font-size: 1rem; margin-top: 10px;">Natural language chat • Room requests • Policy questions • Booking & cancellation</p>
+    </div>
+    <div class="card" style="flex: 1; text-align: center;">
+      <h3>🤖 AI Intervention Points</h3>
+      <p style="font-size: 1rem; margin-top: 10px;">Intent detection • Tool selection • Date parsing • Tone adaptation • Topic filtering</p>
+    </div>
+    <div class="card" style="flex: 1; text-align: center;">
+      <h3>⚙️ Automation</h3>
+      <p style="font-size: 1rem; margin-top: 10px;">Availability lookup • Booking creation • Confirmation generation • Session management</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px; text-align: center;">
+    <div class="chat-mockup" style="display: inline-block; text-align: left;">
+      <div class="chat-header">🏨 Saltystaz Gurgaon — Sophia</div>
+      <div class="chat-body">
+        <div class="chat-msg msg-system">Hi! I'm Sophia. What's your name?</div>
+        <div class="chat-msg msg-user">Hello</div>
+        <div class="chat-msg msg-bot">Hello! I'm Sophia, your concierge. May I know your name please?</div>
+        <div class="chat-msg msg-user">Ravinder</div>
+        <div class="chat-msg msg-bot">Welcome, Ravinder! How may I assist you today?</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Ravinder Singh · <span class="xebia-logo">Xebia</span> Quantum Shift AI Practitioner+ · Capstone Project · June 2026</div>
 </div>
 
 </body>

@@ -37,12 +37,10 @@ export default function Home() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Auto-scroll to latest message
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [state.messages, state.isLoading]);
 
-  // Focus input on mount
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
@@ -96,14 +94,12 @@ export default function Home() {
     const trimmed = messageText.trim();
     if (!trimmed) return;
 
-    // Check for reset commands
     const lowerMessage = trimmed.toLowerCase();
     if (lowerMessage === 'start over' || lowerMessage === 'reset conversation') {
       resetSession();
       return;
     }
 
-    // Add user message to state
     const userMessage: ChatMessage = {
       id: generateId(),
       role: 'user',
@@ -131,7 +127,6 @@ export default function Home() {
       const data = await response.json();
 
       if (!response.ok) {
-        // API returned an error
         const errorMessage: ChatMessage = {
           id: generateId(),
           role: 'system',
@@ -148,7 +143,6 @@ export default function Home() {
         return;
       }
 
-      // Check for session expiry
       if (data.metadata?.sessionExpired) {
         handleSessionExpiry();
         setState((prev) => ({
@@ -158,7 +152,6 @@ export default function Home() {
         return;
       }
 
-      // Success: add assistant reply
       const assistantMessage: ChatMessage = {
         id: generateId(),
         role: 'assistant',
@@ -170,12 +163,11 @@ export default function Home() {
         ...prev,
         messages: [...prev.messages, assistantMessage],
         sessionId: data.sessionId,
-        guestName: prev.guestName ?? trimmed, // First message is the name
+        guestName: prev.guestName ?? trimmed,
         isLoading: false,
         error: null,
       }));
     } catch {
-      // Network failure
       const errorMessage: ChatMessage = {
         id: generateId(),
         role: 'system',
@@ -208,13 +200,11 @@ export default function Home() {
   };
 
   const handleRetry = () => {
-    // Find the last user message and retry it
     const lastUserMessage = [...state.messages]
       .reverse()
       .find((msg) => msg.role === 'user');
 
     if (lastUserMessage) {
-      // Remove the error system message
       setState((prev) => ({
         ...prev,
         messages: prev.messages.filter(
@@ -228,12 +218,12 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-indigo-700 text-white px-4 py-3 shadow-md flex-shrink-0">
+    <div className="flex flex-col h-screen bg-[#F8F9FA]">
+      {/* Header - Xebia Quantum branded */}
+      <header className="bg-gradient-to-r from-[#7B2D8B] to-[#4A1259] text-white px-4 py-3 shadow-lg flex-shrink-0">
         <div className="max-w-3xl mx-auto flex items-center gap-3">
           <div
-            className="w-9 h-9 rounded-full bg-indigo-500 flex items-center justify-center"
+            className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm"
             aria-hidden="true"
           >
             <svg
@@ -251,14 +241,14 @@ export default function Home() {
             </svg>
           </div>
           <div>
-            <h1 className="text-lg font-semibold">Saltystaz Gurgaon</h1>
-            <p className="text-xs text-indigo-200">Sophia - Concierge</p>
+            <h1 className="text-lg font-semibold tracking-tight">Saltystaz Gurgaon</h1>
+            <p className="text-xs text-white/70">Sophia · Concierge</p>
           </div>
           <a
             href="/presentation.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-auto px-3 py-1.5 text-xs font-medium bg-indigo-500 hover:bg-indigo-400 rounded-full transition-colors"
+            className="ml-auto px-3 py-1.5 text-xs font-medium bg-white/15 hover:bg-white/25 rounded-full transition-colors backdrop-blur-sm border border-white/20"
             aria-label="View presentation"
           >
             📊 PPT
@@ -278,25 +268,23 @@ export default function Home() {
             <MessageBubble key={message.id} message={message} />
           ))}
 
-          {/* Loading indicator */}
           {state.isLoading && (
             <div className="flex justify-start">
               <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-sm px-4 py-3 shadow-sm">
-                <div className="flex items-center gap-1" aria-label="Assistant is typing">
-                  <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                  <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                  <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                <div className="flex items-center gap-1.5" aria-label="Assistant is typing">
+                  <span className="w-2 h-2 bg-[#7B2D8B] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                  <span className="w-2 h-2 bg-[#7B2D8B] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                  <span className="w-2 h-2 bg-[#7B2D8B] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                 </div>
               </div>
             </div>
           )}
 
-          {/* Retry button */}
           {state.error === 'network' && !state.isLoading && (
             <div className="flex justify-center">
               <button
                 onClick={handleRetry}
-                className="px-4 py-2 text-sm font-medium text-white bg-red-500 hover:bg-red-600 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2"
+                className="px-4 py-2 text-sm font-medium text-white bg-[#E91E63] hover:bg-[#C2185B] rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#E91E63] focus:ring-offset-2"
                 aria-label="Retry sending message"
               >
                 Retry
@@ -326,14 +314,14 @@ export default function Home() {
             onKeyDown={handleKeyDown}
             placeholder="Type your message..."
             disabled={state.isLoading}
-            className="flex-1 px-4 py-2.5 border border-gray-300 rounded-full text-sm text-gray-900 bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+            className="flex-1 px-4 py-2.5 border border-gray-200 rounded-full text-sm text-gray-900 bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#7B2D8B] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
             autoComplete="off"
             aria-label="Message input"
           />
           <button
             type="submit"
             disabled={state.isLoading || !input.trim()}
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-[#7B2D8B] text-white hover:bg-[#5C1F6A] disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors focus:outline-none focus:ring-2 focus:ring-[#7B2D8B] focus:ring-offset-2"
             aria-label="Send message"
           >
             <svg
@@ -351,6 +339,10 @@ export default function Home() {
             </svg>
           </button>
         </form>
+        {/* Footer branding */}
+        <div className="max-w-3xl mx-auto mt-2 text-center text-[0.7rem] text-gray-500 tracking-wide">
+          Developed by <span className="font-semibold text-gray-700">Ravinder Singh</span> · <span className="font-semibold text-[#7B2D8B]">Xebia</span> Quantum Shift AI Practitioner+
+        </div>
       </footer>
     </div>
   );
@@ -370,9 +362,9 @@ function MessageBubble({ message }: { message: ChatMessage }) {
   if (message.role === 'user') {
     return (
       <div className="flex justify-end">
-        <div className="bg-indigo-600 text-white px-4 py-2.5 rounded-2xl rounded-br-sm max-w-xs sm:max-w-md shadow-sm">
+        <div className="bg-gradient-to-br from-[#7B2D8B] to-[#5C1F6A] text-white px-4 py-2.5 rounded-2xl rounded-br-sm max-w-xs sm:max-w-md shadow-sm">
           <p className="text-sm whitespace-pre-wrap">{message.content}</p>
-          <time className="text-xs text-indigo-200 mt-1 block">
+          <time className="text-xs text-white/60 mt-1 block">
             {formatTime(message.timestamp)}
           </time>
         </div>
